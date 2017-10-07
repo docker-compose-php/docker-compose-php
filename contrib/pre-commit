@@ -1,0 +1,13 @@
+#!/bin/sh
+
+`git rev-parse --show-toplevel`/vendor/bin/php-cs-fixer fix --verbose --show-progress=estimating --config `git rev-parse --show-toplevel`/.php_cs -
+
+if [ $? = 0 ]; then
+    if ! git diff --quiet; then
+        echo "PHP-CS-Fixer fixed some files. Please review changes, add them in git and commit again."
+        exit 1
+    fi
+else 
+    echo "PHP-CS-Fixer faulted for some reason. Please fix the error and try committing again."
+    exit 1
+fi

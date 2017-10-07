@@ -1,0 +1,33 @@
+{
+    "name": "docker-compose-php/docker-compose-php",
+    "license": "MIT",
+    "type": "library",
+    "description": "Docker Compose for PHP",
+    "autoload": {
+        "psr-4": {
+            "DockerCompose\\": "src/DockerCompose/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DockerCompose\\Tests\\": "tests/DockerCompose/"
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "psr/log": "^1.0",
+        "symfony/process": "^2.3 || ^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7",
+        "friendsofphp/php-cs-fixer": "^2.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-ci": "vendor/bin/phpunit --coverage-clover build/coverage.xml",
+        "post-install-cmd": "@php contrib/install.php",
+        "post-update-cmd": "@php contrib/install.php"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}
